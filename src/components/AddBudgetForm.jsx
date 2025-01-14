@@ -1,6 +1,6 @@
 import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
 import { useEffect, useRef } from "react";
-import { Form, useFetcher } from "react-router-dom";
+import { useFetcher } from "react-router-dom";
 
 const AddBudgetForm = () => {
 
@@ -46,14 +46,14 @@ const AddBudgetForm = () => {
             required
             inputMode="decimal"
           />
-          <input type="hidden" name="_action" value="createBudget" />
-          <button type="submit" className="btn btn--dark" disabled={isSubmitting}>
-            {isSubmitting 
-              ? <span>Submitting...</span> 
-              : <><span>Create Budget</span> <CurrencyDollarIcon width={20} /></>
-            }
-          </button>
         </div>
+        <input type="hidden" name="_action" value="createBudget" />
+        <button type="submit" className="btn btn--dark" disabled={isSubmitting}>
+          {isSubmitting 
+            ? <span>Submitting...</span> 
+            : <><span>Create Budget</span> <CurrencyDollarIcon width={20} /></>
+          }
+        </button>
       </fetcher.Form>
     </div>
   )
