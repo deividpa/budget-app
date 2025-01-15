@@ -1,4 +1,4 @@
-export const waait = () => new Promise(res => setTimeout(res, Math.random() * 2000));
+export const waait = () => new Promise(res => setTimeout(res, Math.random() * 800));
 
 // Generate random color
 export const generateRandomColor = () => {
@@ -56,6 +56,11 @@ export const calculateSpentByBudget = (budgetId) => {
 }
 
 // Formatting
+
+// Formate date to locale string
+export const formatDate = (date) => {
+    return new Date(date).toLocaleDateString();
+}
 
 // Format currency
 export const formatCurrency = (amount) => {
