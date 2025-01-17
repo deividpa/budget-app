@@ -39,9 +39,15 @@ export const createExpense = ({ name, amount, budgetId }) => {
     return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]));
 }
 
-// Delete data from local storage
-export const deleteData = ({ key }) => {
-    localStorage.removeItem(key);
+// Delete an item from local storage
+export const deleteItem = ({ key, id }) => {
+    if(id) {
+        const data = fetchData(key) ?? [];
+        const newData = data.filter((item) => item.id !== id);
+        return localStorage.setItem(key, JSON.stringify(newData));
+    }
+
+    return localStorage.removeItem(key);
 }
 
 // Get all items from local storage
