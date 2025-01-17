@@ -20,8 +20,8 @@ const ExpenseItem = ({expense}) => {
       <td>{formatCurrency(amount)}</td>
       <td>{formatDate(createdAt)}</td>
       <td>
-        <Link to={`/budget/${budget.id}`} style={{"--accent": budget.color}}>
-          {budget.name}
+        <Link to={`/budget/${budget?.id}`} style={{"--accent": budget?.color}}>
+          {budget?.name}
         </Link>
       </td>
       <td>
