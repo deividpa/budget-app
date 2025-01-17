@@ -5,7 +5,7 @@ import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
 import { Link, useLoaderData } from "react-router-dom";
-import { createBudget, createExpense, fetchData, waait } from "../../helpers";
+import { createBudget, createExpense, deleteItem, fetchData, waait } from "../../helpers";
 import { toast } from "react-toastify";
 
 // loader
@@ -29,7 +29,7 @@ export async function dashboardAction({ request }) {
       localStorage.setItem("userName", JSON.stringify(values.userName));
       return toast.success(`Werlcome, ${values.userName}`);
     } catch (e) {
-      throw new Error("There was a problem creating your account");
+      throw new Error(`There was a problem creating your expense ${e.message}`);
     }
   }
   
@@ -48,8 +48,6 @@ export async function dashboardAction({ request }) {
 
   // create expense
   if (_action === "createExpense") {
-
-    console.log(values)
     try {
       createExpense({
         name: values.newExpense,
@@ -59,6 +57,16 @@ export async function dashboardAction({ request }) {
       return toast.success(`Expense ${values.newExpense} created!`);
     } catch (e) {
       throw new Error(`There was a problem creating your expense ${e.message}`);
+    }
+  }
+
+  // delete expense
+  if (_action === "deleteExpense") {
+    try {
+      deleteItem({ key: "expenses", id: values.expenseId });
+      return toast.success("Expense deleted successfully!");
+    } catch (e) {
+      throw new Error(`There was a problem deleting your expense ${e.message}`);
     }
   }
 }
