@@ -6,6 +6,7 @@ import Nav from "../components/Nav";
 
 // assets
 import wave from "../assets/wave.svg";
+import Footer from "../components/Footer";
 
 export function mainLoader() {
   const userName = fetchData("userName");
@@ -22,6 +23,7 @@ const Main = () => {
         <Outlet />
       </main>
       <img src={wave} />
+      <Footer />
     </div>
   );
 };
