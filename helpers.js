@@ -1,9 +1,9 @@
-export const waait = () => new Promise(res => setTimeout(res, Math.random() * 800));
+export const waait = () => new Promise(res => setTimeout(res, Math.random() * 2000));
 
 // Generate random color
 export const generateRandomColor = () => {
     const existigBudgetsLength = fetchData("budgets")?.length ?? 0;
-    return `${existigBudgetsLength * 34} 65% 50%`;
+    return `${existigBudgetsLength * 25} 35% 35%`;
 }
 
 // Local storage
