@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import ExpenseItem from './ExpenseItem';
 
-const Table = ({expenses}) => {
+const Table = ({expenses, showBudget = true}) => {
 
   // Sort the expenses by date
   const sortedExpenses = expenses.sort((a, b) => b.createdAt - a.createdAt).slice(0, 8);
@@ -13,7 +13,7 @@ const Table = ({expenses}) => {
         <thead>
           <tr>
             {
-              ["Name", "Amount", "Date", "Budget", ""].map((header, index) => (
+              ["Name", "Amount", "Date", showBudget ? "Budget" : "", ""].map((header, index) => (
                 <th key={index}>{header}</th>
               ))
             }
@@ -23,7 +23,7 @@ const Table = ({expenses}) => {
           {
             sortedExpenses.map((expense) => (
               <tr key={expense.id}>
-                <ExpenseItem expense={expense} />
+                <ExpenseItem expense={expense} showBudget={showBudget} />
               </tr>
             ))
           }
@@ -41,6 +41,7 @@ Table.propTypes = {
     amount: PropTypes.number.isRequired,
     budgetId: PropTypes.string.isRequired,
   })).isRequired,
+  showBudget: PropTypes.bool,
 };
 
 export default Table
