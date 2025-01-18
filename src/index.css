@@ -596,6 +596,25 @@ table a {
   border-radius: var(--round-full);
 }
 
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  color: #333;
+  border-top: 1px solid #e7e7e7;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.footer p {
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.footer p:hover {
+  color: #007bff;
+}
+
 /* toast */
 .Toastify__toast-body {
   font-size: var(--fs-300);
